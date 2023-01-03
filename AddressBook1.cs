@@ -47,6 +47,7 @@ namespace AddressBookProgram
 
                 Console.WriteLine("Enter Email:");
                 var Email = Console.ReadLine();
+                Console.WriteLine();
 
                 Person person = new Person(FirstName, LastName, Address, City, State, Zip, PhoneNum, Email);
                 AddPersonToList(person);
@@ -58,7 +59,6 @@ namespace AddressBookProgram
         {
             foreach (var person in AddressBookList)
             {
-                Console.WriteLine("\n");
                 Console.WriteLine("FirstName: {0}, LastName: {1}, Adress: {2}, City : {3}, State: {4}, Zip: {5}, PhoneNum: {6}, Email: {7}", person.FirstName, person.LastName, person.Address, person.City, person.State, person.Zip, person.PhoneNum, person.Email);
             }
             Console.ReadLine();
@@ -160,6 +160,12 @@ namespace AddressBookProgram
                     person.Email = newValue;
                 }
             }
+        }
+        public void DeleteContact()
+        {
+            Console.WriteLine("Enter firstName of the user you want to remove");
+            var firstName = Console.ReadLine();
+            AddressBookList.RemoveAll(item => item.FirstName == firstName);            
         }
     }
 }
