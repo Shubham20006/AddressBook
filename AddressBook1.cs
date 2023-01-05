@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AddressBookProgram
 {
-     class AddressBook
+    class AddressBook
     {
-        private List<Person> addressBookList = new List<Person>();
+        public List<Person> addressBookList;
         public List<Person> AddressBookList
         {
             get { return addressBookList; }
@@ -19,42 +20,43 @@ namespace AddressBookProgram
         public AddressBook()
         {
             AddressBookList = new List<Person>();
-            
+
         }
-        
+
         public void CreateUser()
         {
-                Console.WriteLine("Enter FirstName:");
-                var FirstName = Console.ReadLine();
+            Console.WriteLine("Enter FirstName:");
+            var FirstName = Console.ReadLine();
 
-                Console.WriteLine("Enter LastName:");
-                var LastName = Console.ReadLine();
+            Console.WriteLine("Enter LastName:");
+            var LastName = Console.ReadLine();
 
-                Console.WriteLine("Enter Address:");
-                var Address = Console.ReadLine();
+            Console.WriteLine("Enter Address:");
+            var Address = Console.ReadLine();
 
-                Console.WriteLine("Enter City:");
-                var City = Console.ReadLine();
+            Console.WriteLine("Enter City:");
+            var City = Console.ReadLine();
 
-                Console.WriteLine("Enter State:");
-                var State = Console.ReadLine();
+            Console.WriteLine("Enter State:");
+            var State = Console.ReadLine();
 
-                Console.WriteLine("Enter Zip:");
-                var Zip = Console.ReadLine();
+            Console.WriteLine("Enter Zip:");
+            var Zip = Console.ReadLine();
 
-                Console.WriteLine("Enter PhoneNum:");
-                var PhoneNum = Console.ReadLine();
+            Console.WriteLine("Enter PhoneNum:");
+            var PhoneNum = Console.ReadLine();
 
-                Console.WriteLine("Enter Email:");
-                var Email = Console.ReadLine();
-                Console.WriteLine();
+            Console.WriteLine("Enter Email:");
+            var Email = Console.ReadLine();
+            Console.WriteLine();
 
-                Person person = new Person(FirstName, LastName, Address, City, State, Zip, PhoneNum, Email);
-                AddPersonToList(person);
-               
-
+            Person person = new Person(FirstName, LastName, Address, City, State, Zip, PhoneNum, Email);
+            AddPersonToList(person); 
         }
+
+
         private void AddPersonToList(Person person) => AddressBookList.Add(person);
+
         public void ShowAllPersonsInList()
         {
             foreach (var person in AddressBookList)
@@ -87,7 +89,7 @@ namespace AddressBookProgram
 
                 foreach (var person in personsWithMatchingFirstName)
                 {
-                    person.FirstName = newValue;                   
+                    person.FirstName = newValue;
                 }
             }
             else if (userOption == "2")
@@ -97,7 +99,7 @@ namespace AddressBookProgram
 
                 foreach (var person in personsWithMatchingFirstName)
                 {
-                    person.LastName = newValue;               
+                    person.LastName = newValue;
                 }
             }
             else if (userOption == "3")
@@ -110,7 +112,7 @@ namespace AddressBookProgram
                     person.Address = newValue;
                 }
             }
-            else if(userOption == "4")
+            else if (userOption == "4")
             {
                 Console.WriteLine("Enter a new City Name");
                 newValue = Console.ReadLine();
@@ -120,7 +122,7 @@ namespace AddressBookProgram
                     person.City = newValue;
                 }
             }
-            else if(userOption == "5")
+            else if (userOption == "5")
             {
                 Console.WriteLine("Enter a new State Name");
                 newValue = Console.ReadLine();
@@ -130,7 +132,7 @@ namespace AddressBookProgram
                     person.State = newValue;
                 }
             }
-            else if(userOption == "6")
+            else if (userOption == "6")
             {
                 Console.WriteLine("Enter a new Zip code");
                 newValue = Console.ReadLine();
@@ -140,7 +142,7 @@ namespace AddressBookProgram
                     person.Zip = newValue;
                 }
             }
-            else if(userOption == "7")
+            else if (userOption == "7")
             {
                 Console.WriteLine("Enter a new PhoneNum");
                 newValue = Console.ReadLine();
@@ -150,7 +152,7 @@ namespace AddressBookProgram
                     person.PhoneNum = newValue;
                 }
             }
-            else if(userOption == "8")
+            else if (userOption == "8")
             {
                 Console.WriteLine("Enter a new Email");
                 newValue = Console.ReadLine();
@@ -165,8 +167,10 @@ namespace AddressBookProgram
         {
             Console.WriteLine("Enter firstName of the user you want to remove");
             var firstName = Console.ReadLine();
-            AddressBookList.RemoveAll(item => item.FirstName == firstName);            
+            AddressBookList.RemoveAll(item => item.FirstName == firstName);          
         }
     }
+   
 }
+
 
